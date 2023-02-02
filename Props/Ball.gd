@@ -21,3 +21,8 @@ func freeze():
 	axis_lock_linear_z = true
 	
 
+
+
+func _on_Ball_body_exited(body):
+	if body is KinematicBody:
+		$AudioStreamPlayer.play()
