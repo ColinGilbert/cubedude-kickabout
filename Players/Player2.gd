@@ -1,8 +1,6 @@
 extends "res://Players/PlayerTemplate.gd"
 
 
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	player_id = 2
+	my_spawn = get_tree().get_root().find_node("Player%sStart" % player_id, true, false) 
