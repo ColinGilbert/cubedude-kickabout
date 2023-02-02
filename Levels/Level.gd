@@ -29,3 +29,9 @@ func update_score(player):
 			Player2Score += 1
 			new_score = Player2Score
 	$GUI.update_score(player, new_score)
+	check_game_over(player, new_score)
+	
+func check_game_over(player, score):
+	if score == 3:
+		$Timer.queue_free()
+		$GUI.game_over(player)
