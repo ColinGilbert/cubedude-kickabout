@@ -1,14 +1,13 @@
 extends KinematicBody
 
 var motion := Vector3()
-var player_id: int = 1
+var player_id: int
 var my_spawn
 var can_move: bool
 const SPEED = 10
 const UP := Vector3(0,1,0)
 
 func _ready():
-
 	can_move = true
 	
 func _physics_process(delta):
@@ -35,10 +34,14 @@ func face_forward():
 	if not motion.x == 0 or not motion.z == 0:
 		look_at(Vector3(-motion.x, 0, -motion.z) * SPEED, UP)
 
-func freeze():
+func freeze(id):
+	print("Player id = " + str(player_id))
+	if id == player_id:
+		$Particles.emitting = true
 	can_move = false
 	
 func reset():
+	#$Particles.emitting = false
 	can_move = true
 	translation = my_spawn.translation
 	rotation = my_spawn.rotation

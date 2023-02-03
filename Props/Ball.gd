@@ -15,13 +15,11 @@ func reset():
 	axis_lock_linear_z = false
 
 	
-func freeze():
+func freeze(id):
 	axis_lock_linear_x = true
 	axis_lock_linear_y = true
 	axis_lock_linear_z = true
 	
-
-
 
 func _on_Ball_body_exited(body):
 	if body is KinematicBody:

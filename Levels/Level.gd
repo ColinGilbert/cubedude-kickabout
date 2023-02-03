@@ -5,14 +5,10 @@ var Player2Score = 0
 
 func _on_GoalDetector_body_entered(body, goal_id):
 	var scoring_player
-	if goal_id == 1:
-		scoring_player = 2
-	else:
-		scoring_player = 1
 	#print("Player " + str(scoring_player) + " has scored a goal!" )
-	get_tree().call_group("game_pieces", "freeze")
+	get_tree().call_group("game_pieces", "freeze", goal_id)
 	$Timer.start()
-	update_score(scoring_player)
+	update_score(goal_id)
 	$Airhorn.play()
 
 
@@ -34,5 +30,5 @@ func update_score(player):
 	
 func check_game_over(player, score):
 	if score == 3:
-		$Timer.queue_free()
+		#$Timer.queue_free()
 		$GUI.game_over(player)
